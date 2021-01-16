@@ -205,8 +205,8 @@ files:
 - name: src/games/gameOfFifteen/GameOfFifteen.kt
   visible: true
   placeholders:
-  - offset: 385
-    length: 6
+  - offset: 403
+    length: 1108
     placeholder_text: TODO()
     initial_state:
       length: 6
