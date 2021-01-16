@@ -233,14 +233,14 @@ files:
 - name: src/games/gameOfFifteen/GameOfFifteenHelper.kt
   visible: true
   placeholders:
-  - offset: 480
-    length: 6
+  - offset: 789
+    length: 0
     placeholder_text: TODO()
     initial_state:
       length: 6
       offset: 480
     initialized_from_dependency: false
-    selected: false
+    selected: true
     status: Failed
   text: |-
     package games.gameOfFifteen
@@ -262,14 +262,14 @@ files:
 - name: src/games/gameOfFifteen/GameOfFifteenInitializer.kt
   visible: true
   placeholders:
-  - offset: 576
-    length: 6
+  - offset: 567
+    length: 22
     placeholder_text: TODO()
     initial_state:
       length: 6
       offset: 576
     initialized_from_dependency: false
-    selected: false
+    selected: true
     status: Failed
   text: |+
     package games.gameOfFifteen
