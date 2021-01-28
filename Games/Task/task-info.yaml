@@ -60,106 +60,6 @@ files:
         operator fun get(i: Int, j: Int): Int?
     }
   learner_created: false
-- name: src/games/game2048/Game2048.kt
-  visible: true
-  placeholders:
-  - offset: 1274
-    length: 67
-    placeholder_text: TODO()
-    initial_state:
-      length: 6
-      offset: 1227
-    initialized_from_dependency: false
-    selected: true
-    status: Failed
-  - offset: 1813
-    length: 831
-    placeholder_text: TODO()
-    initial_state:
-      length: 6
-      offset: 1705
-    initialized_from_dependency: false
-    selected: true
-    status: Failed
-  - offset: 3042
-    length: 664
-    placeholder_text: TODO()
-    initial_state:
-      length: 6
-      offset: 2052
-    initialized_from_dependency: false
-    selected: true
-    status: Failed
-  text: |-
-    package games.game2048
-
-    import board.Cell
-    import board.Direction
-    import board.GameBoard
-    import board.createGameBoard
-    import games.game.Game
-
-    /*
-     * Your task is to implement the game 2048 https://en.wikipedia.org/wiki/2048_(video_game).
-     * Implement the utility methods below.
-     *
-     * After implementing it you can try to play the game running 'PlayGame2048'.
-     */
-    fun newGame2048(initializer: Game2048Initializer<Int> = RandomGame2048Initializer): Game =
-            Game2048(initializer)
-
-    class Game2048(private val initializer: Game2048Initializer<Int>) : Game {
-        private val board = createGameBoard<Int?>(4)
-
-        override fun initialize() {
-            repeat(2) {
-                board.addNewValue(initializer)
-            }
-        }
-
-        override fun canMove() = board.any { it == null }
-
-        override fun hasWon() = board.any { it == 2048 }
-
-        override fun processMove(direction: Direction) {
-            if (board.moveValues(direction)) {
-                board.addNewValue(initializer)
-            }
-        }
-
-        override fun get(i: Int, j: Int): Int? = board.run { get(getCell(i, j)) }
-    }
-
-    /*
-     * Add a new value produced by 'initializer' to a specified cell in a board.
-     */
-    fun GameBoard<Int?>.addNewValue(initializer: Game2048Initializer<Int>) {
-        TODO()
-    }
-
-    /*
-     * Update the values stored in a board,
-     * so that the values were "moved" in a specified rowOrColumn only.
-     * Use the helper function 'moveAndMergeEqual' (in Game2048Helper.kt).
-     * The values should be moved to the beginning of the row (or column),
-     * in the same manner as in the function 'moveAndMergeEqual'.
-     * Return 'true' if the values were moved and 'false' otherwise.
-     */
-    fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
-        TODO()
-    }
-
-    /*
-     * Update the values stored in a board,
-     * so that the values were "moved" to the specified direction
-     * following the rules of the 2048 game .
-     * Use the 'moveValuesInRowOrColumn' function above.
-     * Return 'true' if the values were moved and 'false' otherwise.
-     */
-    fun GameBoard<Int?>.moveValues(direction: Direction): Boolean {
-        TODO()
-    }
-  learner_created: false
 - name: src/games/game2048/Game2048Initializer.kt
   visible: true
   placeholders:
@@ -171,7 +71,7 @@ files:
       offset: 820
     initialized_from_dependency: false
     selected: true
-    status: Failed
+    status: Unchecked
   text: |-
     package games.game2048
 
@@ -202,34 +102,6 @@ files:
         }
     }
   learner_created: false
-- name: src/games/gameOfFifteen/GameOfFifteen.kt
-  visible: true
-  placeholders:
-  - offset: 403
-    length: 1108
-    placeholder_text: TODO()
-    initial_state:
-      length: 6
-      offset: 385
-    initialized_from_dependency: false
-    selected: true
-    status: Failed
-  text: |+
-    package games.gameOfFifteen
-
-    import board.Direction
-    import board.GameBoard
-    import board.createGameBoard
-    import games.game.Game
-
-    /*
-     * Implement the Game of Fifteen (https://en.wikipedia.org/wiki/15_puzzle).
-     * When you finish, you can play the game by executing 'PlayGameOfFifteen'.
-     */
-    fun newGameOfFifteen(initializer: GameOfFifteenInitializer = RandomGameInitializer()): Game =
-        TODO()
-
-  learner_created: false
 - name: src/games/gameOfFifteen/GameOfFifteenHelper.kt
   visible: true
   placeholders:
@@ -241,7 +113,7 @@ files:
       offset: 480
     initialized_from_dependency: false
     selected: true
-    status: Failed
+    status: Unchecked
   text: |-
     package games.gameOfFifteen
 
@@ -258,43 +130,6 @@ files:
     fun isEven(permutation: List<Int>): Boolean {
         TODO()
     }
-  learner_created: false
-- name: src/games/gameOfFifteen/GameOfFifteenInitializer.kt
-  visible: true
-  placeholders:
-  - offset: 567
-    length: 22
-    placeholder_text: TODO()
-    initial_state:
-      length: 6
-      offset: 576
-    initialized_from_dependency: false
-    selected: true
-    status: Failed
-  text: |+
-    package games.gameOfFifteen
-
-    interface GameOfFifteenInitializer {
-        /*
-         * Even permutation of numbers 1..15
-         * used to initialized the first 15 cells on a board.
-         * The last cell is empty.
-         */
-        val initialPermutation: List<Int>
-    }
-
-    class RandomGameInitializer : GameOfFifteenInitializer {
-        /*
-         * Generate a random permutation from 1 to 15.
-         * `shuffled()` function might be helpful.
-         * If the permutation is not even, make it even (for instance,
-         * by swapping two numbers).
-         */
-        override val initialPermutation by lazy {
-            TODO()
-        }
-    }
-
   learner_created: false
 - name: src/games/ui/PlayGame.kt
   visible: true
@@ -891,99 +726,6 @@ files:
         }
     }
   learner_created: false
-- name: test/games/gameOfFifteen/TestGameOfFifteen.kt
-  visible: true
-  text: |-
-    package games.gameOfFifteen
-
-    import board.Direction
-    import board.Direction.*
-    import games.game.Game
-    import org.junit.Assert
-    import org.junit.Test
-
-    class TestGameOfFifteen {
-        private fun Game.asString() =
-                (1..4).joinToString("\n") { i ->
-                    (1..4).joinToString(" ") { j ->
-                        get(i, j)?.let { "%2d".format(it) } ?: " -"
-                    }
-                }
-
-        class TestGameInitializer(
-                override val initialPermutation: List<Int>
-        ) : GameOfFifteenInitializer
-
-        private fun testGame(initialPermutation: List<Int>, moves: List<Move>) {
-            val game = newGameOfFifteen(TestGameInitializer(initialPermutation))
-            game.initialize()
-
-            for ((index, move) in moves.withIndex()) {
-                if (move.direction == null) continue
-                // checking the state after each move
-                Assert.assertTrue("The move for game of fifteen should be always possible", game.canMove())
-                game.processMove(move.direction)
-                val prev = moves[index - 1].board
-                Assert.assertEquals("Wrong result after pressing ${move.direction} " +
-                        "for\n$prev\n",
-                        move.board, game.asString())
-            }
-        }
-
-        data class Move(
-                val direction: Direction?,
-                val initialBoard: String
-        ) {
-            val board: String = initialBoard.trimMargin()
-        }
-
-        @Test
-        fun testMoves() {
-            testGame(listOf(3, 6, 13, 15, 7, 5, 8, 4, 14, 11, 12, 1, 10, 9, 2),
-                    listOf(
-                            Move(null, """
-                | 3  6 13 15
-                | 7  5  8  4
-                |14 11 12  1
-                |10  9  2  -"""),
-                            Move(RIGHT, """
-                | 3  6 13 15
-                | 7  5  8  4
-                |14 11 12  1
-                |10  9  -  2"""),
-                            Move(DOWN, """
-                | 3  6 13 15
-                | 7  5  8  4
-                |14 11  -  1
-                |10  9 12  2"""),
-                            Move(LEFT, """
-                | 3  6 13 15
-                | 7  5  8  4
-                |14 11  1  -
-                |10  9 12  2"""),
-                            Move(UP, """
-                | 3  6 13 15
-                | 7  5  8  4
-                |14 11  1  2
-                |10  9 12  -"""),
-                            Move(RIGHT, """
-                | 3  6 13 15
-                | 7  5  8  4
-                |14 11  1  2
-                |10  9  - 12""")
-                    ))
-        }
-
-        @Test
-        fun testWinning() {
-            val game = newGameOfFifteen(TestGameInitializer(
-                    (1..15).toList()))
-            game.initialize()
-            Assert.assertTrue("The player should win when the numbers are in order",
-                    game.hasWon())
-        }
-    }
-  learner_created: false
 - name: test/games/gameOfFifteen/TestGameOfFifteenHelper.kt
   visible: true
   text: |-
@@ -1479,7 +1221,7 @@ files:
       offset: 730
     initialized_from_dependency: false
     selected: true
-    status: Failed
+    status: Unchecked
   text: |+
     package games.game2048
 
@@ -1578,6 +1320,264 @@ files:
         }
     }
   learner_created: false
+- name: test/games/gameOfFifteen/TestGameOfFifteen.kt
+  visible: true
+  text: |-
+    package games.gameOfFifteen
+
+    import board.Direction
+    import board.Direction.*
+    import games.game.Game
+    import org.junit.Assert
+    import org.junit.Test
+
+    class TestGameOfFifteen {
+        private fun Game.asString() =
+                (1..4).joinToString("\n") { i ->
+                    (1..4).joinToString(" ") { j ->
+                        get(i, j)?.let { "%2d".format(it) } ?: " -"
+                    }
+                }
+
+        class TestGameInitializer(
+                override val initialPermutation: List<Int>
+        ) : GameOfFifteenInitializer
+
+        private fun testGame(initialPermutation: List<Int>, moves: List<Move>) {
+            val game = newGameOfFifteen(TestGameInitializer(initialPermutation))
+            game.initialize()
+
+            for ((index, move) in moves.withIndex()) {
+                if (move.direction == null) continue
+                // checking the state after each move
+                Assert.assertTrue("The move for game of fifteen should be always possible", game.canMove())
+                game.processMove(move.direction)
+                val prev = moves[index - 1].board
+                Assert.assertEquals("Wrong result after pressing ${move.direction} " +
+                        "for\n$prev\n",
+                        move.board, game.asString())
+            }
+        }
+
+        data class Move(
+                val direction: Direction?,
+                val initialBoard: String
+        ) {
+            val board: String = initialBoard.trimMargin()
+        }
+
+        @Test
+        fun testMoves() {
+            testGame(listOf(3, 6, 13, 15, 7, 5, 8, 4, 14, 11, 12, 1, 10, 9, 2),
+                    listOf(
+                            Move(null, """
+                | 3  6 13 15
+                | 7  5  8  4
+                |14 11 12  1
+                |10  9  2  -"""),
+                            Move(RIGHT, """
+                | 3  6 13 15
+                | 7  5  8  4
+                |14 11 12  1
+                |10  9  -  2"""),
+                            Move(DOWN, """
+                | 3  6 13 15
+                | 7  5  8  4
+                |14 11  -  1
+                |10  9 12  2"""),
+                            Move(LEFT, """
+                | 3  6 13 15
+                | 7  5  8  4
+                |14 11  1  -
+                |10  9 12  2"""),
+                            Move(UP, """
+                | 3  6 13 15
+                | 7  5  8  4
+                |14 11  1  2
+                |10  9 12  -"""),
+                            Move(RIGHT, """
+                | 3  6 13 15
+                | 7  5  8  4
+                |14 11  1  2
+                |10  9  - 12""")
+                    ))
+        }
+
+        @Test
+        fun testWinning() {
+            val game = newGameOfFifteen(TestGameInitializer(
+                    (1..15).toList()))
+            game.initialize()
+            Assert.assertTrue("The player should win when the numbers are in order",
+                    game.hasWon())
+        }
+    }
+  learner_created: false
+- name: src/games/gameOfFifteen/GameOfFifteen.kt
+  visible: true
+  placeholders:
+  - offset: 403
+    length: 2476
+    placeholder_text: TODO()
+    initial_state:
+      length: 6
+      offset: 385
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+  text: |+
+    package games.gameOfFifteen
+
+    import board.Direction
+    import board.GameBoard
+    import board.createGameBoard
+    import games.game.Game
+
+    /*
+     * Implement the Game of Fifteen (https://en.wikipedia.org/wiki/15_puzzle).
+     * When you finish, you can play the game by executing 'PlayGameOfFifteen'.
+     */
+    fun newGameOfFifteen(initializer: GameOfFifteenInitializer = RandomGameInitializer()): Game =
+        TODO()
+
+  learner_created: false
+- name: src/games/game2048/Game2048.kt
+  visible: true
+  placeholders:
+  - offset: 1274
+    length: 67
+    placeholder_text: TODO()
+    initial_state:
+      length: 6
+      offset: 1227
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+  - offset: 1813
+    length: 831
+    placeholder_text: TODO()
+    initial_state:
+      length: 6
+      offset: 1705
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+  - offset: 3042
+    length: 664
+    placeholder_text: TODO()
+    initial_state:
+      length: 6
+      offset: 2052
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+  text: |-
+    package games.game2048
+
+    import board.Cell
+    import board.Direction
+    import board.GameBoard
+    import board.createGameBoard
+    import games.game.Game
+
+    /*
+     * Your task is to implement the game 2048 https://en.wikipedia.org/wiki/2048_(video_game).
+     * Implement the utility methods below.
+     *
+     * After implementing it you can try to play the game running 'PlayGame2048'.
+     */
+    fun newGame2048(initializer: Game2048Initializer<Int> = RandomGame2048Initializer): Game =
+            Game2048(initializer)
+
+    class Game2048(private val initializer: Game2048Initializer<Int>) : Game {
+        private val board = createGameBoard<Int?>(4)
+
+        override fun initialize() {
+            repeat(2) {
+                board.addNewValue(initializer)
+            }
+        }
+
+        override fun canMove() = board.any { it == null }
+
+        override fun hasWon() = board.any { it == 2048 }
+
+        override fun processMove(direction: Direction) {
+            if (board.moveValues(direction)) {
+                board.addNewValue(initializer)
+            }
+        }
+
+        override fun get(i: Int, j: Int): Int? = board.run { get(getCell(i, j)) }
+    }
+
+    /*
+     * Add a new value produced by 'initializer' to a specified cell in a board.
+     */
+    fun GameBoard<Int?>.addNewValue(initializer: Game2048Initializer<Int>) {
+        TODO()
+    }
+
+    /*
+     * Update the values stored in a board,
+     * so that the values were "moved" in a specified rowOrColumn only.
+     * Use the helper function 'moveAndMergeEqual' (in Game2048Helper.kt).
+     * The values should be moved to the beginning of the row (or column),
+     * in the same manner as in the function 'moveAndMergeEqual'.
+     * Return 'true' if the values were moved and 'false' otherwise.
+     */
+    fun GameBoard<Int?>.moveValuesInRowOrColumn(rowOrColumn: List<Cell>): Boolean {
+        TODO()
+    }
+
+    /*
+     * Update the values stored in a board,
+     * so that the values were "moved" to the specified direction
+     * following the rules of the 2048 game .
+     * Use the 'moveValuesInRowOrColumn' function above.
+     * Return 'true' if the values were moved and 'false' otherwise.
+     */
+    fun GameBoard<Int?>.moveValues(direction: Direction): Boolean {
+        TODO()
+    }
+  learner_created: false
+- name: src/games/gameOfFifteen/GameOfFifteenInitializer.kt
+  visible: true
+  placeholders:
+  - offset: 567
+    length: 22
+    placeholder_text: TODO()
+    initial_state:
+      length: 6
+      offset: 576
+    initialized_from_dependency: false
+    selected: true
+    status: Unchecked
+  text: |+
+    package games.gameOfFifteen
+
+    interface GameOfFifteenInitializer {
+        /*
+         * Even permutation of numbers 1..15
+         * used to initialized the first 15 cells on a board.
+         * The last cell is empty.
+         */
+        val initialPermutation: List<Int>
+    }
+
+    class RandomGameInitializer : GameOfFifteenInitializer {
+        /*
+         * Generate a random permutation from 1 to 15.
+         * `shuffled()` function might be helpful.
+         * If the permutation is not even, make it even (for instance,
+         * by swapping two numbers).
+         */
+        override val initialPermutation by lazy {
+            TODO()
+        }
+    }
+
+  learner_created: false
 - name: src/board/BoardImpl.kt
   visible: true
   placeholders:
@@ -1589,7 +1589,7 @@ files:
       offset: 90
     initialized_from_dependency: false
     selected: false
-    status: Failed
+    status: Unchecked
   - offset: 3030
     length: 6
     placeholder_text: TODO()
@@ -1598,7 +1598,7 @@ files:
       offset: 149
     initialized_from_dependency: false
     selected: false
-    status: Failed
+    status: Unchecked
   text: |+
     package board
 
@@ -1609,8 +1609,9 @@ files:
 
   learner_created: false
 feedback_link: https://www.coursera.org/learn/kotlin-for-java-developers/programming/NSid0/game-2048-game-of-fifteen/discussions
-status: Failed
+status: Unchecked
 feedback:
-  message: An operation is not implemented.
-  time: Fri, 15 Jan 2021 22:08:21 UTC
+  message: <html>Submission successful, please <a href="https://www.coursera.org/learn/kotlin-for-java-developers/programming/NSid0/game-2048-game-of-fifteen/submission">check
+    the status on Coursera</a></html>
+  time: Mon, 18 Jan 2021 22:15:49 UTC
 record: -1

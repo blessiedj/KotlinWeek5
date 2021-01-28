@@ -37,3 +37,9 @@ m
 =Games/Task/test/games/game2048/TestMoveValuesInRowOrColumn.kt,3/6/36879dd53b624130726d6f26aa72a629e0b71086
 `
 0Games/Task/test/games/game2048/TestMoveValues.kt,c/6/c6ac715562d82f1797647aa5f438cd5e598c8889
+n
+>Games/Task/test/games/gameOfFifteen/TestGameOfFifteenHelper.kt,6/8/6811b15641344d80756a6785a88682dfa036b52d
+h
+8Games/Task/test/games/gameOfFifteen/TestGameOfFifteen.kt,9/3/9388f5e5d15a2ae55f66c76228116b15031ac191
+s
+CGames/Task/test/games/gameOfFifteen/TestGameOfFifteenInitializer.kt,f/6/f6df2b530b46c37fa946893bd7fff819151b0f90
